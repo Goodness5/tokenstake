@@ -64,6 +64,7 @@ contract Nftstake{
         require(msg.sender == isowner, "you need the boreApe nft to stake");
         Staker storage _user = user[msg.sender];
         uint256 _amount = _user.stakeAmount;
+        stakeToken.approve(address(this), amount);
 
         stakeToken.transfer(msg.sender, amount);
 
