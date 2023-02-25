@@ -7,15 +7,23 @@ dotenv.config();
 
 const config: HardhatUserConfig = {
   solidity: "0.8.17",
+  defaultNetwork: "hardhat",
 
   networks: {
 
       hardhat: {
         
         forking: {
+          enabled: true,
           //@ts-ignore
           url: process.env.MAINETURL,
+          accounts: [process.env.PRIVATE_KEY]
         }
+      },
+      goerli: {
+        url: process.env.GOERLI_RPC,
+        //@ts-ignore
+        accounts: [process.env.PRIVATE_KEY],
       },
   },
   etherscan: {
